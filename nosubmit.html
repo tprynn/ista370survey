@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>ISTA 370 Experiment</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/navbar.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container">
+	<div class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+
+		<div class="navbar-header">
+			<div class="navbar-brand">
+				ISTA 370 Experiment
+			</div>
+		</div>
+
+		</div>
+	</div>
+	</div>
+
+	<form action="nosubmit.php" method="post" class="form-inline">
+	
+	<div class="container-fluid">
+	
+		<div class="alert alert-danger" role="alert" id="alert-danger" style="display: none">
+		</div>
+	
+		<div class="container" id="walkthrough-container">
+			<div class="container walkthrough" id="intro">
+				<p>
+				Welcome to the experiment. It should take about 5 minutes. Please make sure the following things are true:
+				</p>
+				
+				<ul class="list-group">
+					<li class=list-group-item>You are using a desktop or laptop computer, <b>not</b> a smartphone or tablet</li>
+					<li class=list-group-item>You are using a modern browser (IE10+, Chrome, Firefox)</li>
+					<li class=list-group-item>Javascript is enabled</li>
+					<li class=list-group-item>You have not taken this survey before</li>
+				</ul>	
+					
+				<p>
+				When you're ready, click here to continue:
+				<button type="button" class="btn btn-primary" id="experiment-start">Start</button>
+				</p>
+			</div>
+		</div>
+	
+		<div class="container" id="experiment-container">
+
+			<div class="container" id="survey" style="display: none">
+				Great! Now that you've started, please don't refresh the page or close the window until you've finished.
+				<br><br>
+				Tell us about yourself:
+				
+				<fieldset>
+				<div class="control-group">
+				  <label class="control-label" for="sex">Sex</label>
+				  <div class="controls">
+				    <label class="radio" for="survey-sex-male">
+				      <input type="radio" name="sex" id="survey-sex-male" value="m">
+				      Male
+				    </label>
+				    <label class="radio" for="survey-sex-female">
+				      <input type="radio" name="sex" id="survey-sex-female" value="f">
+				      Female
+				    </label>
+				    <label class="radio" for="survey-sex-other">
+				      <input type="radio" name="sex" id="survey-sex-other" value="o">
+				      Other
+				    </label>
+				  </div>
+				</div>
+	
+				<div class="control-group">
+				  <label class="control-label" for="age">Age</label>
+				  <div class="controls">
+				    <input id="survey-age" name="age" type="number" class="input-xlarge">
+				  </div>
+				</div>
+				
+				<div class="control-group">
+				  <label class="control-label" for="student-id">Student ID (not required)</label>
+				  <div class="controls">
+				    <input id="survey-id" name="student-id" type="text" class="input-xlarge">
+				  </div>
+				</div>
+				
+				</fieldset>
+				
+				<br><br>
+				
+				<button type="button" class="btn btn-primary" id="survey-finish">Continue</button>
+			</div>
+			
+			<div class="container" id="experiment-explanation">
+				<div class="experiment-container" id="task1-explanation" style="display: none">
+					<p>
+					The first task will ask you to estimate the number of objects in an image. <br>
+					You will see an image like the one below, which will disappear after a short time. <br>
+					Then, you will choose whether there were more blue or orange objects. <br>
+					</p>
+					
+					<div class="panel panel-default" style="display: inline-block">
+						<img src="img/task1.png">
+					</div>
+					
+					<div style="display:none">
+					<input id="task1-group" name="task1-group" type="hidden">
+					<input id="task1-response-1" name="task1-1" type="hidden">
+					<input id="task1-response-2" name="task1-2" type="hidden">
+					<input id="task1-response-3" name="task1-3" type="hidden">
+					</div>
+				</div>
+				
+				<div class="experiment-container" id="task1-response-container" style="display:none">
+					<p>Were there more blue circles, or orange circles?</p>
+					<button type="button" class="btn task1-response" id="task1-response-blue" style="background:#3000F0; color:white">Blue</button>
+					<button type="button" class="btn task1-response" id="task1-response-orange" style="background:#FFAE00; color:white">Orange</button>
+				</div>
+				
+				<div class="experiment-container" id="task2-explanation" style="display:none">
+					<p>
+					The second task will test your reaction time. <br>
+					After a certain amount of a time, a button will pop up on your screen. <br>
+					Click the button as quickly as possible. <br>
+					</p>
+					
+					<div style="display:none">
+					<input id="task2-group" name="task2-group" type="hidden">
+					<input id="task2-response-1" name="task2-1" type="hidden">
+					<input id="task2-response-2" name="task2-2" type="hidden">
+					<input id="task2-response-3" name="task2-3" type="hidden">
+					</div>
+				</div>
+				
+				<div class="experiment-container" id="experiment-success" style="display:none">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green; font-size:15em"></span>
+				<p>Great job! Keep going.</p>
+				</div>
+				
+				<div class="experiment-container" id="experiment-failure" style="display:none">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red; font-size:15em"></span>
+				<p>You messed up. Please try again.</p>
+				</div>
+				
+				<div class="experiment-container" id="experiment-continue" style="display:none">
+					<p>
+					When you are ready, click here to continue: 
+					<button type="button" class="btn btn-primary" id="experiment-continue-button">Continue</button>
+					</p>
+				</div>
+				
+				<div class="experiment-container" id="experiment-task1-finish" style="display:none">
+					<p>
+					Good job, you've finished the first task! Click here to continue: 
+					<button type="button" class="btn btn-primary" id="task1-finish">Continue</button>
+					</p>
+				</div>
+				
+				<div class="experiment-container" id="experiment-task2-finish" style="display:none">
+					<p>Awesome, you're done! Please click here to submit:
+					<input type="submit" class="btn btn-success">
+					</p>
+				</div>
+			</div>
+			
+			<div class="panel panel-default" id="experiment-panel" style="display: none">
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	
+	
+	
+	</form>
+
+
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/d3.min.js"></script>
+	<script src="js/experiment.js"></script>
+</body>
+
+</html>
